@@ -10,7 +10,10 @@
 
 **Watch out for and fix these bugs if they show up in your code:**
 
-- [ ] Make sure user should be able to string together several operations and get right answer example: `12 + 7 - 5 * 3 = 42`
+- [ ] Make sure user should be able to string together several operations and get right answer.
+
+example: `12 + 7 - 5 * 3 = 42`
+
 - [ ] Answers should round that have long decimals so that they don't overflow the screen.
 - [ ] Pressing "clear" should wipe out any existing data.. make sure the user is really starting fresh after pressing "clear"
 - [ ] Display an error message if the user tries to divide by 0. Don't let it crash your calculator!
