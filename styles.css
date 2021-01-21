@@ -4,36 +4,35 @@ body {
   height: 90vh;
 }
 @font-face {
-  font-family: 'calcScreenFont';
-  src: url('./fonts/test.ttf')
+  font-family: "calcScreenFont";
+  src: url("./fonts/test.ttf");
 }
 @font-face {
-  font-family: 'cisoSans';
-  src: url('./fonts/CiscoSans.ttf')
+  font-family: "cisoSans";
+  src: url("./fonts/CiscoSans.ttf");
 }
 #calculator {
   display: grid;
-  grid-template-columns: 20px 3fr 20px;
-  grid-template-rows: 1fr 2fr 2fr 20px;
-  width: 45vh;
-  height: 65vh;
+  grid-template-columns: 2% 1fr 2%;
+  grid-template-rows: 10% 2fr 10% 3% 2fr 2%;
+  width: 44vh;
+  height: 68vh;
   align-content: center;
   justify-content: center;
   border: black;
   border-style: solid;
   border-radius: 10%;
-  /* background-color: grey; */
   margin-top: 10% !important;
   margin: auto;
-  background-color: #000000;
   background-image: linear-gradient(315deg, #000000 0%, #2c2c2c 74%);
+  gap: 2px;
 }
 #buttonContainer {
   display: grid;
   grid-column-start: 2;
-  grid-row-start: 3;
+  grid-row-start: 5;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   width: fit-content;
   height: fit-content;
   gap: 3px;
@@ -87,7 +86,7 @@ body {
 #subtract {
   grid-column-start: 5;
   grid-row-start: 3;
-  padding: 10px 30px 10px 30px !important;
+  padding: 10px 25px 10px 25px !important;
 }
 #multiply {
   grid-column-start: 5;
@@ -104,50 +103,58 @@ body {
 #clear {
   grid-column-start: 1;
   grid-row-start: 3;
+  padding: 10px 28px 10px 25px !important;
 }
 #decimal {
   grid-column-start: 3;
   grid-row-start: 4;
   width: 30% !important;
-  padding: 10px 20px 10px 30px !important;
-  /* !important; */
+  padding: 10px 20px 10px 25px !important;
+}
+#allClear {
+  grid-column-start: 1;
+  grid-row-start: 4;
+  font-size: 3vh !important;
+  padding: 15px 20px 15px 20px !important;
+}
+#changePlusMinus {
+  grid-column-start: 1;
+  grid-row-start: 2;
+  font-size: 3vh !important;
+  padding: 15px 15px 15px 15px !important;
+}
+#percent {
+  grid-column-start: 1;
+  grid-row-start: 1;
+  font-size: 3vh !important;
+  padding: 15px 25px 15px 25px !important;
 }
 #containerScreen {
   display: grid;
   grid-row-start: 2;
   grid-column-start: 2;
-  justify-self: center;
-  align-self: center;
   border-style: solid;
-  border-color: rgb(0, 0, 0);
   background-image: linear-gradient(315deg, #000000 0%, #181818 74%);
   border-radius: 2%;
-  height: 70%;
-  width: 90%;
-  justify-self: center;
-  align-self: flex-end;
-  margin-bottom: 5%;
+  height: 90%;
+  width: 95%;
+  justify-content: stretch;
 }
 #screen {
   border-style: solid;
   border-color: rgba(58, 56, 56, 0.981);
-  height: 70%;
-  width: 90%;
-  justify-self: center;
-  align-self: flex-end;
-  margin-bottom: 5%;
-  background-color: black !important;
+  height: 80%;
+  width: 93%;
 }
 #text {
   display: grid;
-  height: 85%;
+  height: 100%;
   max-width: 100%;
   align-content: center;
   text-align: left;
   font-size: 1em;
-  font-family: 'calcScreenFont', Helvetica, sans-serif, Arial;
+  font-family: "calcScreenFont", Helvetica, sans-serif, Arial;
   word-wrap: break-word;
-  margin-top: 5%;
 }
 #aboveScreen {
   display: grid;
@@ -157,11 +164,11 @@ body {
   grid-template-columns: 1fr 1fr;
   justify-self: center;
   align-self: center;
-  height: 50%;
+  height: 70%;
   width: 90%;
   justify-self: center;
   align-self: flex-end;
-  margin-bottom: 5%;
+  margin-bottom: 2%;
 }
 #powerButton {
   grid-row-start: 1;
@@ -186,25 +193,28 @@ body {
   padding-top: 15px;
 }
 #solarPanel {
-  grid-row-start: 2;
-  grid-column-start: 2;
-  height: 50px;
+  grid-row-start: 3;
+  grid-column-start: 1;
+  grid-column-end: 3;
   text-align: center;
-  align-self: flex-start;
+  border-style: solid;
+  border-color: black;
+  border-radius: 5%;
+  width: 40vh;
+  justify-self: center;
 }
 #solarPowerText {
-  grid-row-start: 2;
+  grid-row-start: 4;
   grid-column-start: 2;
   text-align: center;
-  align-self: center;
+  align-self: start;
+  font-size: 80%;
 }
 .textBoxStyles {
-  background-color: black;
   border-style: solid;
   border-radius: 25%;
-  padding: 10px 25px 10px 25px;
-  background-color: #05e8ba;
-  background-image: linear-gradient(315deg, #05e8ba 0%, #087ee1 74%); BLUE
+  padding: 10px 20px 10px 20px;
+  background-image: linear-gradient(315deg, #05e8ba 0%, #087ee1 74%);
 }
 .textSize {
   font-size: 4vh;
@@ -212,14 +222,30 @@ body {
   font-weight: bolder;
   justify-self: center;
   align-self: center;
-  color:  #181818;
+  color: #181818;
 }
 .screenStyle {
-  background-color: #05e8ba;
-  background-image: linear-gradient(315deg, #0d8dbb 0%, #11e9ba 74%); BLUE
+  background-image: linear-gradient(315deg, #0d8dbb 0%, #11e9ba 74%);
 }
 .topCalcText {
-  font-family: 'CisoSans';
-  color: #C0C0C0;
-  text-shadow: 2px 2px #181818;
+  font-family: "CisoSans";
+  color: #c0c0c0;
+}
+.solarPowerText {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  background-color: #12124d;
+  font-size: 4vh;
+  color: #151541;
+  text-shadow: 2px 2px #191970;
+}
+.clearStyles {
+  color: #181818;
+  text-shadow: 1px 2px #0d8dbb;
+  border-style: solid;
+  border-radius: 25%;
+  padding: 10px 20px 10px 20px;
+  /* background-image: linear-gradient(315deg, #000000 0%, #181818 74%); */
+  background-image: linear-gradient(315deg, #0dbb6a 0%, #11e93c 74%);
+  border-color: black;
 }
