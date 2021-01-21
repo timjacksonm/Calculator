@@ -4,8 +4,12 @@ body {
   height: 90vh;
 }
 @font-face {
-  font-family: 'MyWebFont';
+  font-family: 'calcScreenFont';
   src: url('./fonts/test.ttf')
+}
+@font-face {
+  font-family: 'cisoSans';
+  src: url('./fonts/CiscoSans.ttf')
 }
 #calculator {
   display: grid;
@@ -141,7 +145,7 @@ body {
   align-content: center;
   text-align: left;
   font-size: 1em;
-  font-family: 'MyWebFont', Helvetica, sans-serif, Arial;
+  font-family: 'calcScreenFont', Helvetica, sans-serif, Arial;
   word-wrap: break-word;
   margin-top: 5%;
 }
@@ -149,15 +153,50 @@ body {
   display: grid;
   grid-row-start: 1;
   grid-column-start: 2;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   justify-self: center;
   align-self: center;
-  /* border-style: solid;
-  border-color: black; */
   height: 50%;
   width: 90%;
   justify-self: center;
   align-self: flex-end;
   margin-bottom: 5%;
+}
+#powerButton {
+  grid-row-start: 1;
+  grid-column-start: 2;
+  justify-self: flex-end;
+  background-image: linear-gradient(315deg, #000000 0%, #181818 74%);
+  border-style: solid;
+  border-color: black;
+  border-radius: 100%;
+  height: auto;
+  width: auto;
+  padding: 0px 3px 0px 3px;
+}
+#brandName {
+  grid-row-start: 1;
+  grid-column-start: 1;
+}
+#versionName {
+  grid-row-start: 1;
+  grid-column-start: 1;
+  align-self: center;
+  padding-top: 15px;
+}
+#solarPanel {
+  grid-row-start: 2;
+  grid-column-start: 2;
+  height: 50px;
+  text-align: center;
+  align-self: flex-start;
+}
+#solarPowerText {
+  grid-row-start: 2;
+  grid-column-start: 2;
+  text-align: center;
+  align-self: center;
 }
 .textBoxStyles {
   background-color: black;
@@ -178,4 +217,9 @@ body {
 .screenStyle {
   background-color: #05e8ba;
   background-image: linear-gradient(315deg, #0d8dbb 0%, #11e9ba 74%); BLUE
+}
+.topCalcText {
+  font-family: 'CisoSans';
+  color: #C0C0C0;
+  text-shadow: 2px 2px #181818;
 }
