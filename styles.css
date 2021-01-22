@@ -37,9 +37,9 @@ body {
   grid-template-rows: repeat(4, 1fr);
   width: fit-content;
   height: fit-content;
-  gap: 3px;
   justify-self: center;
   align-self: flex-end;
+  gap: 5px;
 }
 #zero {
   grid-column-start: 2;
@@ -123,7 +123,7 @@ body {
   grid-column-start: 1;
   grid-row-start: 2;
   font-size: 3vh !important;
-  padding: 15px 15px 15px 15px !important;
+  padding: 15px 20px 15px 20px !important;
 }
 #percent {
   grid-column-start: 1;
@@ -147,6 +147,7 @@ body {
   border-color: rgba(58, 56, 56, 0.981);
   height: 80%;
   width: 93%;
+  align-self: center;
 }
 #text {
   display: grid;
@@ -220,9 +221,9 @@ body {
 .textSize {
   font-size: 4vh;
   font-family: Helvetica, sans-serif, Arial;
-  font-weight: bolder;
+  font-weight: bold;
   justify-self: center;
-  align-self: center;
+  text-align: center;
   color: #181818;
 }
 .screenStyle {
