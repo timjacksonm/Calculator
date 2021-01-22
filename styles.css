@@ -1,9 +1,9 @@
 body {
-  background-image: url("./graphics/background.jpg");
+  /* background-image: url("./graphics/background.jpg");
   background-size: 100% 100%;
-  height: 90vh;
+  height: 90vh; */
   /* background-color: #88b2c7; */
-  /* background-color: #12343b; */
+  background-color: #12343b;
 }
 @font-face {
   font-family: "calcScreenFont";
@@ -233,8 +233,8 @@ body {
   color: #181818;
 }
 .screenStyle {
-  background-image: linear-gradient(315deg, #0d8dbb 0%, #11e9ba 74%);
-  /* background-image: linear-gradient(315deg, #0dbb6a 0%, #11e93c 74%); */
+  /* background-image: linear-gradient(315deg, #0d8dbb 0%, #11e9ba 74%); */
+  background-image: linear-gradient(315deg, #0dbb6a 0%, #11e93c 74%);
   /* background-image: linear-gradient(315deg, #12124d 0%, #0d8dbb 74%); */
 }
 .topCalcText {
