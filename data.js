@@ -13,12 +13,16 @@ function operate(operator, a, b){
     const screenDialog = document.querySelector('#text');
 
     if(operator === '+'){
+        result = add(num1,num2);
         screenDialog.textContent = add(num1,num2);
        }else if(operator === '-') {
+           result = subtract(num1,num2);
         screenDialog.textContent = subtract(num1,num2);
        }else if(operator === '*') {
+           result = multiply(num1,num2);
         screenDialog.textContent = multiply(num1,num2);
        }else if(operator === '/') {
+           result = divide(num1,num2);
         screenDialog.textContent = divide(num1,num2);
        }
 };
@@ -59,53 +63,78 @@ function allButtons() {
     const equalsB = document.querySelector('#equals');
     equalsB.addEventListener('click', () => { equalsKeyPress()});
 
-
+    const allClear = document.querySelector('#allClear');
+    allClear.addEventListener('click', ()  => allClearPress());
 }
 function logDataArray() {
-    // const screenDialog = document.querySelector('#text');
-    // screenDialog.textContent = arguments[0];
+    let intiger = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+    
+    let box1 = [];
+    let box2 = [];
 
-    let intiger = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-    let operator = ['+', '-', '*', '/']
+    if (intiger.includes(arguments[0])) {
+        if (operateInput.includes('nothing')){
+        box1.push(arguments[0]);                //Before operater add subtract divide multiply are called
+        numBeforeOp = box1.join('');            //Adds to global array
+        } else
+            box2.push(arguments[0]);            //if above is false - must be after operaterInput has been chosen.
+            numAfterOp = box2.join('');
 
-    if(intiger.includes(Number(arguments[0]))) {
-        if(operateInput.includes('nothing')) {
-            numBeforeOp.push(arguments[0]);
-        }else
-        numAfterOp.push(arguments[0]);
-    }else if(operator.includes(arguments[1])) {
-        operateInput.pop();
-        operateInput.push(arguments[1]);
+    } else if(operateInput.includes('nothing')) { // this checks if an operator has already been called before
+                operateInput.pop(); // pops out 'nothing' string
+                operateInput.push(arguments[1]); // puts in first chosen operator
+            
+    } else if(result.length === 1) { // if there is something in the operatorInput  is ther also something in result?
+                numBeforeOp = result; //if true numBeforeOp will need to = current result
+                numAfterOp = []; //numAfterOp needs to be 0 so user can select another number
+                operateInput.pop(); // current op removed
+                operateInput.push(arguments[1]); // new op added
+    } else {
+        equalsKeyPress(); // if nothing in result. user may have done 1+1+ <-- added another op to equation.
+        numBeforeOp = result; //we evaluate the equation. add result to numBeforeOp
+        operateInput.pop(); //remove old op
+        operateInput.push(arguments[1]); // put new one in.
+        
     }
 }
 function turnOnScreen() {
-    const selectBackroundColor = document.querySelector('#screen');
+    const selectBackgroundColor = document.querySelector('#screen');
 
-    selectBackroundColor.classList.add('screenStyle');
-
+    selectBackgroundColor.getAttribute('class') === 'textSize screenStyle' ?
+        selectBackgroundColor.classList.remove('screenStyle') :
+        selectBackgroundColor.classList.add('screenStyle');
 }
 function updateScreenText () {
     const screenDialog = document.querySelector('#text');
 
-    if(operateInput.includes('nothing')) {
-    screenDialog.textContent = numBeforeOp.join('');
-    }else
-    screenDialog.textContent = numAfterOp.join(''); // can shorten since its boolean true false
+    operateInput.includes('nothing') ?
+    screenDialog.textContent = numBeforeOp :
+    screenDialog.textContent = numAfterOp;
 }
 function screenShowOpt() {
     const screenDialog = document.querySelector('#text');
 
     screenDialog.textContent = operateInput;
 }
+function equalsKeyPress() {
+operate(operateInput[0], numBeforeOp, numAfterOp);
+}
+function allClearPress() {
+    const screenDialog = document.querySelector('#text');
+
+    numBeforeOp = [];
+    operateInput = ['nothing'];
+    numAfterOp = [];
+
+    screenDialog.textContent = '';
+}
+// function clearPress() {
+//     numBeforeOp = [];
+//     numAfterOp = [];
+// } doesn't do anything yet
 allButtons();
 let numBeforeOp = [];
 let operateInput = ['nothing'];
 let numAfterOp = [];
-
-function equalsKeyPress() {
-    let numPassA = numBeforeOp.join('');
-    let numPassB = numAfterOp.join('');
-
-operate(operateInput[0], numPassA, numPassB);
-}
+let result = [];
 
