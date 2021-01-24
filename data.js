@@ -14,17 +14,17 @@ function operate(operator, a, b){
 
     if(arguments[0] == '+'){
         data.result = add(num1,num2);
-        screenDialog.textContent = add(num1,num2);
        }else if (arguments[0] == '-') {
            data.result = subtract(num1,num2);
-        screenDialog.textContent = subtract(num1,num2);
        }else if(arguments[0] == '*') {
            data.result = multiply(num1,num2);
-        screenDialog.textContent = multiply(num1,num2);
        }else if(arguments[0] == '/') {
+           if (data.numAfterOp == '0') {
+           accessDenied();
+           } else
            data.result = divide(num1,num2);
-        screenDialog.textContent = divide(num1,num2);
        }
+    screenDialog.textContent = data.result;
 };
 
 function allButtons() {
@@ -95,6 +95,11 @@ function turnOnScreen() {
         selectBackgroundColor.classList.remove('screenStyle') :
         selectBackgroundColor.classList.add('screenStyle');
 }
+function accessDenied() {
+    let audio = new Audio('./graphics/dennis_nedry_ahahah.mp3');
+    audio.play();
+    data.result = "Access Denied";
+}
 function updateScreenText () {
     const screenDialog = document.querySelector('#text');
 
@@ -103,11 +108,11 @@ function updateScreenText () {
 
     data.numBeforeOp.length >= 2 ?
     num1 = data.numBeforeOp.join('') :
-    console.log('numBeforeOp strings not joined as there was only 1 string');
+    false;
 
     data.numAfterOp.length >= 2 ?
     num2 = data.numAfterOp.join('') :
-    console.log('numAfterOp strings not joined as there was only 1 string');
+    false;
 
     data.operatorinput.includes('nothing') ?
     screenDialog.textContent = num1 :
@@ -124,11 +129,11 @@ function equalsKeyPress() {
 
     data.numBeforeOp.length >= 2 ?
     num1 = data.numBeforeOp.join('') :
-    console.log('numBeforeOp strings not joined as there was only 1 string');
+    false;
 
     data.numAfterOp.length >= 2 ?
     num2 = data.numAfterOp.join('') :
-    console.log('numAfterOp strings not joined as there was only 1 string');
+    false;
 
     
 operate(data.operatorinput, num1, num2);
