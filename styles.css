@@ -110,8 +110,8 @@ body {
 #decimal {
   grid-column-start: 3;
   grid-row-start: 4;
-  width: 30% !important;
-  padding: 10px 20px 10px 25px !important;
+  width: 90% !important;
+  /* padding: 10px 20px 10px 25px !important; */
 }
 #allClear {
   grid-column-start: 1;

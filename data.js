@@ -90,10 +90,19 @@ function logDataArray() {
 };
 function turnOnScreen() {
     const selectBackgroundColor = document.querySelector('#screen');
+    let powerOn = new Audio('./graphics/529929__vishwajay__boop-852-mhz.wav')
+    let powerOff = new Audio('./graphics/529930__vishwajay__boop-741-mhz.wav')
 
-    selectBackgroundColor.getAttribute('class') === 'textSize screenStyle' ?
-        selectBackgroundColor.classList.remove('screenStyle') :
+    if (selectBackgroundColor.getAttribute('class') === 'textSize screenStyle') {
+        selectBackgroundColor.classList.remove('screenStyle')
+        powerOff.play();
+        allClearPress();
+        disableButtons(true);
+    }else {
         selectBackgroundColor.classList.add('screenStyle');
+        powerOn.play();
+        disableButtons(false);
+    }
 }
 function accessDenied() {
     let audio = new Audio('./graphics/dennis_nedry_ahahah.mp3');
@@ -152,11 +161,19 @@ function allClearPress() {
 
     screenDialog.textContent = '';
 }
+function disableButtons() {
+    selectButtons = document.querySelector('#buttonContainer').querySelectorAll('button');
+    selectButtons.forEach((button) => {
+        button.disabled = arguments[0];
+        }
+    )
+};
 // function clearPress() {
 //     numBeforeOp = [];
 //     numAfterOp = [];
 // } doesn't do anything yet
 allButtons();
+disableButtons(true);
 let data = {
     intigerCompare: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
     operatorCompare: ['+', '-', '*', '/'],
