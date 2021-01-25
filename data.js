@@ -5,20 +5,25 @@ function operate(operator, a, b){
     const divide = (a, b) => a/b;
     const num1 = Number(a);
     const num2 = Number(b);
+    let result = 0;
 
     const screenDialog = document.querySelector('#text');
 
     if(arguments[0] == '+'){
-        data.result = add(num1,num2);
+        result = add(num1,num2);
+        data.result = Number((result).toFixed(2));
        }else if (arguments[0] == '-') {
-           data.result = subtract(num1,num2);
+           result = subtract(num1,num2);
+           data.result = Number((result).toFixed(2));
        }else if(arguments[0] == '*') {
-           data.result = multiply(num1,num2);
+           result = multiply(num1,num2);
+           data.result = Number((result).toFixed(2));
        }else if(arguments[0] == '/') {
            if (data.numAfterOp == '0') {
            accessDenied();
            } else
-           data.result = divide(num1,num2);
+           result = divide(num1,num2);
+           data.result = Number((result).toFixed(2));
        };
     screenDialog.textContent = data.result;
 };
@@ -52,6 +57,9 @@ function allButtons() {
     const divideV = document.querySelector('#divide');
     divideV.addEventListener('click', () => { logDataArray(divideV.textContent, divideV.getAttribute('value')), screenShowOpt()}); // --^
 
+    const decimalV = document.querySelector('#decimal');
+    decimalV.addEventListener('click', () => { logDataArray(decimalV.textContent), updateScreenText()});
+
     const powerB = document.querySelector('#powerButton');
     powerB.addEventListener('click', () => { turnOnScreen()});
 
@@ -70,7 +78,7 @@ function logDataArray() {
         if (data.operatorinput.includes('nothing')) {
             data.numBeforeOp.push(arguments[0]);
         } else if (data.operatorCompare.includes(data.operatorinput[0])) {
-            if (data.result.length === 0) {
+            if (data.result.length === 0 || data.result.length === undefined) {
                 data.numAfterOp.push(arguments[0]);
             } else {
                 if (data.numAfterOp.length === 1) {
@@ -154,7 +162,7 @@ function allClearPress() {
     const screenDialog = document.querySelector('#text');
 
     data = {
-        intigerCompare: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
+        intigerCompare: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'],
         operatorCompare: ['+', '-', '*', '/'],
         numBeforeOp: [],
         operatorinput: ['nothing'],
@@ -199,7 +207,7 @@ function clearPress() {
 allButtons();
 disableButtons(true);
 let data = {
-    intigerCompare: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
+    intigerCompare: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'],
     operatorCompare: ['+', '-', '*', '/'],
     numBeforeOp: [],
     operatorinput: ['nothing'],
