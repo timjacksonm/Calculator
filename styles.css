@@ -187,9 +187,9 @@ body {
   border-style: solid;
   border-color: black;
   border-radius: 100%;
-  height: auto;
+  height: 80%;
   width: auto;
-  padding: 0px 3px 0px 3px;
+  padding: 4px 5px 5px 5px;
 }
 #brandName {
   grid-row-start: 1;
