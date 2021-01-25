@@ -250,6 +250,9 @@ function percentageButton () {
         y = Number(data.numBeforeOp.join(''));
         z = ( x * ( x / 100));
         data.numAfterOp = Array.from(z.toString());  
+    }else if (data.operatorinput.includes('/')) {
+        data.numAfterOp = data.numAfterOp.join('');
+        data.numAfterOp = Array.from((data.numAfterOp / 100).toString());
     }
     updateScreenText();
 };
