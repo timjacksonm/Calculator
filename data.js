@@ -1,12 +1,8 @@
-const add = (a, b) => a+b;
-
-const subtract = (a, b) => a-b;
-
-const multiply = (a, b) => a*b;
-
-const divide = (a, b) => a/b;
-
 function operate(operator, a, b){
+    const add = (a, b) => a+b;
+    const subtract = (a, b) => a-b;
+    const multiply = (a, b) => a*b;
+    const divide = (a, b) => a/b;
     const num1 = Number(a);
     const num2 = Number(b);
 
@@ -23,10 +19,9 @@ function operate(operator, a, b){
            accessDenied();
            } else
            data.result = divide(num1,num2);
-       }
+       };
     screenDialog.textContent = data.result;
 };
-
 function allButtons() {
     const numOne = document.querySelector('#one');
     numOne.addEventListener('click', () => { logDataArray(numOne.textContent), updateScreenText()});
@@ -65,8 +60,12 @@ function allButtons() {
 
     const allClear = document.querySelector('#allClear');
     allClear.addEventListener('click', ()  => allClearPress());
-}
+
+    const clearBackspace = document.querySelector('#clear');
+    clearBackspace.addEventListener('click', () => clearPress());
+};
 function logDataArray() {
+    //This function is our brains to make calculator work. 
     if (data.intigerCompare.includes(arguments[0])) {
         if (data.operatorinput.includes('nothing')) {
             data.numBeforeOp.push(arguments[0]);
@@ -74,6 +73,7 @@ function logDataArray() {
             if (data.result.length === 0) {
                 data.numAfterOp.push(arguments[0]);
             } else {
+                // this has to be here if we are running multiple strings.
                 data.numAfterOp.push(arguments[0]);
             }
         } 
@@ -86,12 +86,12 @@ function logDataArray() {
         data.operatorinput = Array.from(arguments[1]);
         data.numBeforeOp = data.result;
         data.numAfterOp = [];
-    }
+    };
 };
 function turnOnScreen() {
     const selectBackgroundColor = document.querySelector('#screen');
-    let powerOn = new Audio('./graphics/529929__vishwajay__boop-852-mhz.wav')
-    let powerOff = new Audio('./graphics/529930__vishwajay__boop-741-mhz.wav')
+    let powerOn = new Audio('./graphics/529929__vishwajay__boop-852-mhz.wav');
+    let powerOff = new Audio('./graphics/529930__vishwajay__boop-741-mhz.wav');
 
     if (selectBackgroundColor.getAttribute('class') === 'textSize screenStyle') {
         selectBackgroundColor.classList.remove('screenStyle')
@@ -102,13 +102,13 @@ function turnOnScreen() {
         selectBackgroundColor.classList.add('screenStyle');
         powerOn.play();
         disableButtons(false);
-    }
-}
+    };
+};
 function accessDenied() {
     let audio = new Audio('./graphics/dennis_nedry_ahahah.mp3');
     audio.play();
     data.result = "Access Denied";
-}
+};
 function updateScreenText () {
     const screenDialog = document.querySelector('#text');
 
@@ -126,12 +126,12 @@ function updateScreenText () {
     data.operatorinput.includes('nothing') ?
     screenDialog.textContent = num1 :
     screenDialog.textContent = num2;
-}
+};
 function screenShowOpt() {
     const screenDialog = document.querySelector('#text');
 
     screenDialog.textContent = data.operatorinput;
-}
+};
 function equalsKeyPress() {
     let num1 = data.numBeforeOp;
     let num2 = data.numAfterOp;
@@ -146,7 +146,7 @@ function equalsKeyPress() {
 
     
 operate(data.operatorinput, num1, num2);
-}
+};
 function allClearPress() {
     const screenDialog = document.querySelector('#text');
 
@@ -157,21 +157,42 @@ function allClearPress() {
         operatorinput: ['nothing'],
         numAfterOp: [],
         result: '',
-    }
+    };
 
     screenDialog.textContent = '';
-}
+};
 function disableButtons() {
     selectButtons = document.querySelector('#buttonContainer').querySelectorAll('button');
     selectButtons.forEach((button) => {
         button.disabled = arguments[0];
         }
-    )
+    );
 };
-// function clearPress() {
-//     numBeforeOp = [];
-//     numAfterOp = [];
-// } doesn't do anything yet
+function clearPress() {
+    //this function is similar to hitting backspace on keyboard.
+    const screenDialog = document.querySelector('#text');
+
+    let num1 = data.numBeforeOp;
+    let num2 = data.numAfterOp;
+
+    data.numBeforeOp.length >= 2 ?
+    num1 = data.numBeforeOp.join('') :
+    false;
+
+    data.numAfterOp.length >= 2 ?
+    num2 = data.numAfterOp.join('') :
+    false;
+
+    if (screenDialog.textContent == num1) {
+        data.numBeforeOp.pop();
+        updateScreenText();
+    } else if (screenDialog.textContent == num2) {
+        data.numAfterOp.pop();
+        updateScreenText();
+    }else {
+        //do nothing because result is on screen.
+    };
+};
 allButtons();
 disableButtons(true);
 let data = {
@@ -181,4 +202,4 @@ let data = {
     operatorinput: ['nothing'],
     numAfterOp: [],
     result: '',
-}
+};
