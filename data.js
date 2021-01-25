@@ -72,6 +72,9 @@ function allButtons() {
 
     const clearBackspace = document.querySelector('#clear');
     clearBackspace.addEventListener('click', () => clearPress());
+
+    const changePlusNegative = document.querySelector('#changePlusNegative')
+    changePlusNegative.addEventListener('click', () => plusNegativeButton());
 };
 function logDataArray() {
     //This function is our brains to make calculator work. 
@@ -204,6 +207,25 @@ function clearPress() {
     }else {
         //do nothing because result is on screen.
     };
+};
+function plusNegativeButton () {
+    let value = '-';
+
+    if (data.operatorinput.includes('nothing')) {
+        if (data.numBeforeOp.includes(value)) {
+            data.numBeforeOp.splice(0,1);
+        } else {
+    data.numBeforeOp.unshift(value)
+        }
+    } else {
+        if (data.numAfterOp.includes(value)) {
+            data.numAfterOp.splice(0,1)
+        } else {
+    data.numAfterOp.unshift(value);
+        }
+    }
+
+    updateScreenText();
 };
 allButtons();
 disableButtons(true);
