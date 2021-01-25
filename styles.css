@@ -119,7 +119,7 @@ body {
   font-size: 3vh !important;
   padding: 15px 20px 15px 20px !important;
 }
-#changePlusMinus {
+#changePlusNegative {
   grid-column-start: 1;
   grid-row-start: 2;
   font-size: 3vh !important;
@@ -129,7 +129,7 @@ body {
   grid-column-start: 1;
   grid-row-start: 1;
   font-size: 3vh !important;
-  padding: 15px 25px 15px 25px !important;
+  padding: 15px 23px 15px 23px !important;
 }
 #containerScreen {
   display: grid;

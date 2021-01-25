@@ -60,6 +60,9 @@ function allButtons() {
 
     const decimalV = document.querySelector('#decimal');
     decimalV.addEventListener('click', () => { logDataArray(decimalV.textContent), updateScreenText()});
+    
+    const percentageB = document.querySelector('#percent');
+    percentageB.addEventListener('click', () => { percentageButton()});
 
     const powerB = document.querySelector('#powerButton');
     powerB.addEventListener('click', () => { turnOnScreen()});
@@ -159,8 +162,7 @@ function equalsKeyPress() {
     num2 = data.numAfterOp.join('') :
     false;
 
-    
-operate(data.operatorinput, num1, num2);
+    operate(data.operatorinput, num1, num2);
 };
 function allClearPress() {
     const screenDialog = document.querySelector('#text');
@@ -225,6 +227,21 @@ function plusNegativeButton () {
         }
     }
 
+    updateScreenText();
+};
+function percentageButton () {
+    if (data.operatorinput.includes('nothing')) {
+        data.numBeforeOp = data.numBeforeOp.join('');
+        data.numBeforeOp = Array.from((data.numBeforeOp / 100).toString());
+    } else if (data.operatorinput.includes('+')) {
+        let x = Number(data.numAfterOp.join(''));
+        let y = Number(data.numBeforeOp.join(''));
+        let z = ( x * ( x / 100));
+        data.numAfterOp = Array.from(z.toString());  
+    } else if (data.operatorinput.includes('*')) {
+        data.numAfterOp = data.numAfterOp.join('');
+        data.numAfterOp = Array.from((data.numAfterOp / 100).toString());
+    }
     updateScreenText();
 };
 allButtons();
