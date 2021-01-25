@@ -11,16 +11,17 @@
 **Watch out for and fix these bugs if they show up in your code:**
 
 - [✔️] Make sure user should be able to string together several operations and get right answer. example: `12 + 7 - 5 * 3 = 42`
-- [ ] Answers should round that have long decimals so that they don't overflow the screen.
+- [✔️] Answers should round that have long decimals so that they don't overflow the screen.
 - [✔️] Pressing "AllClear" should wipe out any existing data.. make sure the user is really starting fresh after pressing "AllClear"
 - [✔️] Display an error message if the user tries to divide by 0. Don't let it crash your calculator!
 
 **Extra Credit**
 
-- [ ] Add a ` . ` button and let users input decimals!
+- [✔️] Add a ` . ` button and let users input decimals!
 - [✔️] Make the calculator look nice!
-- [ ] Add a `backspace` button.
+- [✔️] Add a `backspace` button.
 - [ ] Add keyboard support!
+- [ ] make additional buttons work like +/- & %percentage.
 
 
 **Changelog:**
