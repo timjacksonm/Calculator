@@ -240,7 +240,7 @@ function percentageButton () {
     } else if (data.operatorinput.includes('+')) {
         x = Number(data.numAfterOp.join(''));
         y = Number(data.numBeforeOp.join(''));
-        z = ( x * ( x / 100));
+        z = ( y * ( x / 100));
         data.numAfterOp = Array.from(z.toString());  
     } else if (data.operatorinput.includes('*')) {
         data.numAfterOp = data.numAfterOp.join('');
@@ -248,7 +248,7 @@ function percentageButton () {
     } else if (data.operatorinput.includes('-')) {
         x = Number(data.numAfterOp.join(''));
         y = Number(data.numBeforeOp.join(''));
-        z = ( x * ( x / 100));
+        z = ( y * ( x / 100));
         data.numAfterOp = Array.from(z.toString());  
     }else if (data.operatorinput.includes('/')) {
         data.numAfterOp = data.numAfterOp.join('');
