@@ -230,17 +230,26 @@ function plusNegativeButton () {
     updateScreenText();
 };
 function percentageButton () {
+    let x = 0;
+    let y = 0;
+    let z = 0;
+
     if (data.operatorinput.includes('nothing')) {
         data.numBeforeOp = data.numBeforeOp.join('');
         data.numBeforeOp = Array.from((data.numBeforeOp / 100).toString());
     } else if (data.operatorinput.includes('+')) {
-        let x = Number(data.numAfterOp.join(''));
-        let y = Number(data.numBeforeOp.join(''));
-        let z = ( x * ( x / 100));
+        x = Number(data.numAfterOp.join(''));
+        y = Number(data.numBeforeOp.join(''));
+        z = ( x * ( x / 100));
         data.numAfterOp = Array.from(z.toString());  
     } else if (data.operatorinput.includes('*')) {
         data.numAfterOp = data.numAfterOp.join('');
         data.numAfterOp = Array.from((data.numAfterOp / 100).toString());
+    } else if (data.operatorinput.includes('-')) {
+        x = Number(data.numAfterOp.join(''));
+        y = Number(data.numBeforeOp.join(''));
+        z = ( x * ( x / 100));
+        data.numAfterOp = Array.from(z.toString());  
     }
     updateScreenText();
 };
