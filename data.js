@@ -21,9 +21,10 @@ function operate(operator, a, b){
        }else if(arguments[0] == '/') {
            if (data.numAfterOp == '0') {
            accessDenied();
-           } else
+           } else {
            result = divide(num1,num2);
            data.result = Number((result).toFixed(2));
+           }
        };
     screenDialog.textContent = data.result;
 };
