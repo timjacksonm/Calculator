@@ -73,7 +73,10 @@ function logDataArray() {
             if (data.result.length === 0) {
                 data.numAfterOp.push(arguments[0]);
             } else {
-                // this has to be here if we are running multiple strings.
+                if (data.numAfterOp.length === 1) {
+                    allClearPress();
+                    data.numBeforeOp.push(arguments[0]);
+                }else
                 data.numAfterOp.push(arguments[0]);
             }
         } 
