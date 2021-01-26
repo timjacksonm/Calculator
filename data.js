@@ -147,16 +147,9 @@ function turnOnScreen() {
     let powerOn = new Audio('./graphics/529929__vishwajay__boop-852-mhz.wav');
     let powerOff = new Audio('./graphics/529930__vishwajay__boop-741-mhz.wav');
 
-    if (selectBackgroundColor.getAttribute('class') === 'textSize screenStyle') {
-        selectBackgroundColor.classList.remove('screenStyle')
-        powerOff.play();
-        allClearPress();
-        disableButtons(true);
-    }else {
-        selectBackgroundColor.classList.add('screenStyle');
-        powerOn.play();
-        disableButtons(false);
-    };
+    selectBackgroundColor.getAttribute('class') === 'textSize screenStyle' ? 
+    selectBackgroundColor.classList.remove('screenStyle') && powerOff.play() && allClearPress() && disableButtons(true)
+    : selectBackgroundColor.classList.add('screenStyle') && powerOn.play() && disableButtons(false);
 };
 function accessDenied() {
     let audio = new Audio('./graphics/dennis_nedry_ahahah.mp3');
