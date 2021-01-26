@@ -93,7 +93,7 @@ function allButtons() {
 
     const clearBackspace = document.querySelector('#clear');
     clearBackspace.addEventListener('click', () => clearPress());
-    document.addEventListener('keypress', (key) => { key.key == "Backspace" ? clearPress() : false});
+    // document.addEventListener('keypress', (key) => { key.key == "Backspace" ? clearPress() : false}); Doesn't work for some reason.
 
     const changePlusNegative = document.querySelector('#changePlusNegative')
     changePlusNegative.addEventListener('click', () => plusNegativeButton());

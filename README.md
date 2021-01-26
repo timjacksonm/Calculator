@@ -20,8 +20,8 @@
 - [✔️] Add a ` . ` button and let users input decimals!
 - [✔️] Make the calculator look nice!
 - [✔️] Add a `backspace` button.
-- [ ] Add keyboard support!
-- [ ] make additional buttons work like +/- & %percentage.
+- [✔️] Add keyboard support!
+- [✔️] make additional buttons work like +/- & %percentage.
 
 
 **Changelog:**
