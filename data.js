@@ -162,9 +162,9 @@ function updateScreenText () {
     let num1 = data.numBeforeOp;
     let num2 = data.numAfterOp;
 
-    if(data.numBeforeOp.length >= 2) {num1 = data.numBeforeOp.join('')};
+    if(data.numBeforeOp.length >= 2){num1 = data.numBeforeOp.join('')};
 
-    if(data.numAfterOp.length >= 2) {num2 = data.numAfterOp.join('')};
+    if(data.numAfterOp.length >= 2){num2 = data.numAfterOp.join('')};
 
     data.operatorinput.includes('nothing') ? screenDialog.textContent = num1
     : screenDialog.textContent = data.copyText + num2;
@@ -179,13 +179,9 @@ function equalsKeyPress() {
     let num1 = data.numBeforeOp;
     let num2 = data.numAfterOp;
 
-    data.numBeforeOp.length >= 2 ?
-    num1 = data.numBeforeOp.join('') :
-    false;
+    if(data.numBeforeOp.length >= 2){num1 = data.numBeforeOp.join('')};
 
-    data.numAfterOp.length >= 2 ?
-    num2 = data.numAfterOp.join('') :
-    false;
+    if(data.numAfterOp.length >= 2){num2 = data.numAfterOp.join('')};
 
     operate(data.operatorinput, num1, num2);
 };
