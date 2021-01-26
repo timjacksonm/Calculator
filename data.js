@@ -31,75 +31,75 @@ function operate(operator, a, b){
 function allButtons() {
     const numOne = document.querySelector('#one');
     numOne.addEventListener('click', () => { logDataArray(numOne.textContent), updateScreenText()});
-    document.addEventListener('keydown', (key) => { key.key == "1" ? (logDataArray(numOne.textContent), updateScreenText()) : false});
+    document.addEventListener('keydown', key => { if(key.key == "1"){logDataArray("1"); updateScreenText();}});
 
     const numTwo = document.querySelector('#two');
     numTwo.addEventListener('click', () => { logDataArray(numTwo.textContent), updateScreenText()});
-    document.addEventListener('keydown', (key) => { key.key == "2" ? (logDataArray(numTwo.textContent), updateScreenText()) : false});
+    document.addEventListener('keydown', key => {if(key.key == "2"){logDataArray("2"); updateScreenText();}});
 
     const numThree = document.querySelector('#three');
     numThree.addEventListener('click', () => { logDataArray(numThree.textContent), updateScreenText()});
-    document.addEventListener('keydown', (key) => { key.key == "3" ? (logDataArray(numThree.textContent), updateScreenText()) : false});
+    document.addEventListener('keydown', key => {if(key.key == "3"){logDataArray("3"); updateScreenText()}});
 
     const numFour = document.querySelector('#four');
     numFour.addEventListener('click', () => { logDataArray(numFour.textContent), updateScreenText()});
-    document.addEventListener('keydown', (key) => { key.key == "4" ? (logDataArray(numFour.textContent), updateScreenText()) : false});
+    document.addEventListener('keydown', key => {if(key.key == "4"){logDataArray("4"); updateScreenText()}});
 
     const numFive = document.querySelector('#five');
     numFive.addEventListener('click', () => { logDataArray(numFive.textContent), updateScreenText()});
-    document.addEventListener('keydown', (key) => { key.key == "5" ? (logDataArray(numFive.textContent), updateScreenText()) : false});
+    document.addEventListener('keydown', key => {if(key.key == "5"){logDataArray("5"); updateScreenText();}});
     
     const numSix = document.querySelector('#six');
     numSix.addEventListener('click', () => { logDataArray(numSix.textContent), updateScreenText()});
-    document.addEventListener('keydown', (key) => { key.key == "6" ? (logDataArray(numSix.textContent), updateScreenText()) : false});
+    document.addEventListener('keydown', key => {if(key.key == "6"){logDataArray("6"); updateScreenText();}});
 
     const numSeven = document.querySelector('#seven');
     numSeven.addEventListener('click', () => { logDataArray(numSeven.textContent), updateScreenText()});
-    document.addEventListener('keydown', (key) => { key.key == "7" ? (logDataArray(numSeven.textContent), updateScreenText()) : false});
+    document.addEventListener('keydown', key => {if(key.key == "7"){logDataArray("7"); updateScreenText();}});
 
     const numEight = document.querySelector('#eight');
     numEight.addEventListener('click', () => { logDataArray(numEight.textContent), updateScreenText()});
-    document.addEventListener('keydown', (key) => { key.key == "8" ? (logDataArray(numEight.textContent), updateScreenText()) : false});
+    document.addEventListener('keydown', key => {if(key.key == "8"){logDataArray("8"); updateScreenText();}});
     
     const numNine = document.querySelector('#nine');
     numNine.addEventListener('click', () => { logDataArray(numNine.textContent), updateScreenText()});
-    document.addEventListener('keydown', (key) => { key.key == "9" ? (logDataArray(numNine.textContent), updateScreenText()) : false});
+    document.addEventListener('keydown', key => {if(key.key == "9"){logDataArray("9"); updateScreenText();}});
 
     const numZero = document.querySelector('#zero');
     numZero.addEventListener('click', () => { logDataArray(numZero.textContent), updateScreenText()});
-    document.addEventListener('keydown', (key) => { key.key == "0" ? (logDataArray(numZero.textContent), updateScreenText()) : false});
+    document.addEventListener('keydown', key => {if(key.key == "0"){logDataArray("0"); updateScreenText();}});
 
     const addV = document.querySelector('#add');
-    addV.addEventListener('click', () => { logDataArray(addV.textContent, addV.getAttribute('value')), screenShowOpt()});// passing two arguements because my textContent won't work on operate() for division and multiply ex (5 'X' 5 =NAN, but 5 '*' 5 =25)
-    document.addEventListener('keydown', (key) => { key.key == "+" ? (logDataArray(addV.textContent, addV.getAttribute('value')), screenShowOpt()) : false});
+    addV.addEventListener('click', () => { logDataArray(addV.textContent, addV.getAttribute('value')), screenShowOpt()});
+    document.addEventListener('keydown', key => {if(key.key == "+"){logDataArray(addV.textContent, addV.getAttribute('value')); screenShowOpt();}});
 
     const subtractV = document.querySelector('#subtract');
     subtractV.addEventListener('click', () => { logDataArray(subtractV.textContent, subtractV.getAttribute('value')), screenShowOpt()});// add and subtract I just added values to aswell even though it wasn't really needed.
-    document.addEventListener('keydown', (key) => { key.key == "-" ? (logDataArray(subtractV.textContent, subtractV.getAttribute('value')), screenShowOpt()) : false});
+    document.addEventListener('keydown', key => {if(key.key == "-"){logDataArray(subtractV.textContent, subtractV.getAttribute('value')); screenShowOpt();}});
 
     const multiplyV = document.querySelector('#multiply');
     multiplyV.addEventListener('click', () => { logDataArray(multiplyV.textContent, multiplyV.getAttribute('value')), screenShowOpt()}); // the logDataArray() function populates the screen with arg[0] and the if statement uses arg[1]
-    document.addEventListener('keydown', (key) => { key.key == "*" ? (logDataArray(multiplyV.textContent, multiplyV.getAttribute('value')), screenShowOpt()) : false});
+    document.addEventListener('keydown', key => {if(key.key == "*"){logDataArray(multiplyV.textContent, multiplyV.getAttribute('value')); screenShowOpt()}});
 
     const divideV = document.querySelector('#divide');
     divideV.addEventListener('click', () => { logDataArray(divideV.textContent, divideV.getAttribute('value')), screenShowOpt()}); // --^
-    document.addEventListener('keydown', (key) => { key.key == "/" ? (logDataArray(divideV.textContent, divideV.getAttribute('value')), screenShowOpt()) : false});
+    document.addEventListener('keydown', key => {if(key.key == "/"){logDataArray(divideV.textContent, divideV.getAttribute('value')); screenShowOpt();}});
 
 
     const decimalV = document.querySelector('#decimal');
     decimalV.addEventListener('click', () => { logDataArray(decimalV.textContent), updateScreenText()});
-    document.addEventListener('keydown', (key) => { key.key == "." ? (logDataArray(decimalV.textContent), updateScreenText()) : false});
+    document.addEventListener('keydown', key => {if(key.key == "."){logDataArray(decimalV.textContent), updateScreenText()}});
     
     const percentageB = document.querySelector('#percent');
     percentageB.addEventListener('click', () => { percentageButton()});
-    document.addEventListener('keydown', (key) => { key.key == "%" ? (percentageButton()) : false});
+    document.addEventListener('keydown', key => {if(key.key == "%"){percentageButton()}});
 
     const powerB = document.querySelector('#powerButton');
     powerB.addEventListener('click', () => { turnOnScreen()});
 
     const equalsB = document.querySelector('#equals');
     equalsB.addEventListener('click', () => { equalsKeyPress()});
-    document.addEventListener('keydown', (key) => { key.key == "=" || key.key == "Enter" ? (equalsKeyPress()) : false});
+    document.addEventListener('keydown', key => {if(key.key == "=" || key.key == "Enter"){(equalsKeyPress())}});
 
 
     const allClear = document.querySelector('#allClear');
@@ -107,7 +107,7 @@ function allButtons() {
 
     const clearBackspace = document.querySelector('#clear');
     clearBackspace.addEventListener('click', () => clearPress());
-    document.addEventListener('keydown', (key) => { key.key == "Backspace" ? clearPress() : false});
+    document.addEventListener('keydown', key => {if(key.key == "Backspace"){clearPress();}});
 
     const changePlusNegative = document.querySelector('#changePlusNegative')
     changePlusNegative.addEventListener('click', () => plusNegativeButton());
