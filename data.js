@@ -28,87 +28,98 @@ function operate(operator, a, b){
        };
     screenDialog.textContent = data.result;
 };
+function keyboardSupportAdd() {
+    //Calls functions from global data variable
+    document.addEventListener('keydown', data.numOne);
+    document.addEventListener('keydown', data.numTwo);
+    document.addEventListener('keydown', data.numThree);
+    document.addEventListener('keydown', data.numFour);
+    document.addEventListener('keydown', data.numFive);
+    document.addEventListener('keydown', data.numSix);
+    document.addEventListener('keydown', data.numSeven);
+    document.addEventListener('keydown', data.numEight);
+    document.addEventListener('keydown', data.numNine);
+    document.addEventListener('keydown', data.numZero);
+
+    document.addEventListener('keydown', data.addV);
+    document.addEventListener('keydown', data.subtractV);
+    document.addEventListener('keydown', data.multiplyV);
+    document.addEventListener('keydown', data.divideV);
+
+    document.addEventListener('keydown', data.decimalV);
+    document.addEventListener('keydown', data.percentageB);
+    document.addEventListener('keydown', data.equalsB);
+    document.addEventListener('keydown', data.clearBackspace);
+};
+function keyboardSuportRemove() {
+    document.removeEventListener('keydown', data.numOne);
+    document.removeEventListener('keydown', data.numTwo);
+    document.removeEventListener('keydown', data.numThree);
+    document.removeEventListener('keydown', data.numFour);
+    document.removeEventListener('keydown', data.numFive);
+    document.removeEventListener('keydown', data.numSix);
+    document.removeEventListener('keydown', data.numSeven);
+    document.removeEventListener('keydown', data.numEight);
+    document.removeEventListener('keydown', data.numNine);
+    document.removeEventListener('keydown', data.numZero);
+
+    document.removeEventListener('keydown', data.addV);
+    document.removeEventListener('keydown', data.subtractV);
+    document.removeEventListener('keydown', data.multiplyV);
+    document.removeEventListener('keydown', data.divideV);
+
+    document.removeEventListener('keydown', data.decimalV);
+    document.removeEventListener('keydown', data.percentageB);
+    document.removeEventListener('keydown', data.equalsB);
+    document.removeEventListener('keydown', data.clearBackspace);
+}
 function allButtons() {
     const numOne = document.querySelector('#one');
     numOne.addEventListener('click', () => { logDataArray(numOne.textContent), updateScreenText()});
-    document.addEventListener('keydown', key => { if(key.key == "1"){logDataArray("1"); updateScreenText();}});
-
     const numTwo = document.querySelector('#two');
     numTwo.addEventListener('click', () => { logDataArray(numTwo.textContent), updateScreenText()});
-    document.addEventListener('keydown', key => {if(key.key == "2"){logDataArray("2"); updateScreenText();}});
-
     const numThree = document.querySelector('#three');
     numThree.addEventListener('click', () => { logDataArray(numThree.textContent), updateScreenText()});
-    document.addEventListener('keydown', key => {if(key.key == "3"){logDataArray("3"); updateScreenText()}});
-
     const numFour = document.querySelector('#four');
     numFour.addEventListener('click', () => { logDataArray(numFour.textContent), updateScreenText()});
-    document.addEventListener('keydown', key => {if(key.key == "4"){logDataArray("4"); updateScreenText()}});
-
     const numFive = document.querySelector('#five');
     numFive.addEventListener('click', () => { logDataArray(numFive.textContent), updateScreenText()});
-    document.addEventListener('keydown', key => {if(key.key == "5"){logDataArray("5"); updateScreenText();}});
-    
     const numSix = document.querySelector('#six');
     numSix.addEventListener('click', () => { logDataArray(numSix.textContent), updateScreenText()});
-    document.addEventListener('keydown', key => {if(key.key == "6"){logDataArray("6"); updateScreenText();}});
-
     const numSeven = document.querySelector('#seven');
     numSeven.addEventListener('click', () => { logDataArray(numSeven.textContent), updateScreenText()});
-    document.addEventListener('keydown', key => {if(key.key == "7"){logDataArray("7"); updateScreenText();}});
-
     const numEight = document.querySelector('#eight');
     numEight.addEventListener('click', () => { logDataArray(numEight.textContent), updateScreenText()});
-    document.addEventListener('keydown', key => {if(key.key == "8"){logDataArray("8"); updateScreenText();}});
-    
     const numNine = document.querySelector('#nine');
     numNine.addEventListener('click', () => { logDataArray(numNine.textContent), updateScreenText()});
-    document.addEventListener('keydown', key => {if(key.key == "9"){logDataArray("9"); updateScreenText();}});
-
     const numZero = document.querySelector('#zero');
     numZero.addEventListener('click', () => { logDataArray(numZero.textContent), updateScreenText()});
-    document.addEventListener('keydown', key => {if(key.key == "0"){logDataArray("0"); updateScreenText();}});
 
     const addV = document.querySelector('#add');
     addV.addEventListener('click', () => { logDataArray(addV.textContent, addV.getAttribute('value')), screenShowOpt()});
-    document.addEventListener('keydown', key => {if(key.key == "+"){logDataArray(addV.textContent); screenShowOpt();}});
-
     const subtractV = document.querySelector('#subtract');
     subtractV.addEventListener('click', () => { logDataArray(subtractV.textContent, subtractV.getAttribute('value')), screenShowOpt()});
-    document.addEventListener('keydown', key => {if(key.key == "-"){logDataArray(subtractV.textContent); screenShowOpt();}});
-
     const multiplyV = document.querySelector('#multiply');
     multiplyV.addEventListener('click', () => { logDataArray(multiplyV.textContent, multiplyV.getAttribute('value')), screenShowOpt()});
-    document.addEventListener('keydown', key => {if(key.key == "*"){logDataArray(multiplyV.textContent, multiplyV.getAttribute('value')); screenShowOpt()}});
-
     const divideV = document.querySelector('#divide');
     divideV.addEventListener('click', () => { logDataArray(divideV.textContent, divideV.getAttribute('value')), screenShowOpt()});
-    document.addEventListener('keydown', key => {if(key.key == "/"){logDataArray(divideV.textContent, divideV.getAttribute('value')); screenShowOpt();}});
 
     const decimalV = document.querySelector('#decimal');
     decimalV.addEventListener('click', () => { logDataArray(decimalV.textContent), updateScreenText()});
-    document.addEventListener('keydown', key => {if(key.key == "."){logDataArray(decimalV.textContent), updateScreenText()}});
-    
     const percentageB = document.querySelector('#percent');
     percentageB.addEventListener('click', () => { percentageButton()});
-    document.addEventListener('keydown', key => {if(key.key == "%"){percentageButton()}});
+    const equalsB = document.querySelector('#equals');
+    equalsB.addEventListener('click', () => { equalsKeyPress()});
+    
+    const allClear = document.querySelector('#allClear');
+    allClear.addEventListener('click', ()  => allClearPress());
+    const clearBackspace = document.querySelector('#clear');
+    clearBackspace.addEventListener('click', () => clearPress());
+    const changePlusNegative = document.querySelector('#changePlusNegative')
+    changePlusNegative.addEventListener('click', () => plusNegativeButton());
 
     const powerB = document.querySelector('#powerButton');
     powerB.addEventListener('click', () => { turnOnScreen();});
-
-    const equalsB = document.querySelector('#equals');
-    equalsB.addEventListener('click', () => { equalsKeyPress()});
-    document.addEventListener('keydown', key => {if(key.key == "=" || key.key == "Enter"){(equalsKeyPress())}});
-
-    const allClear = document.querySelector('#allClear');
-    allClear.addEventListener('click', ()  => allClearPress());
-
-    const clearBackspace = document.querySelector('#clear');
-    clearBackspace.addEventListener('click', () => clearPress());
-    document.addEventListener('keydown', key => {if(key.key == "Backspace"){clearPress();}});
-
-    const changePlusNegative = document.querySelector('#changePlusNegative')
-    changePlusNegative.addEventListener('click', () => plusNegativeButton());
 };
 function logDataArray() {
     //The first part to this If statment is for intigers only.
@@ -147,11 +158,13 @@ function turnOnScreen() {
     let powerOff = new Audio('./graphics/529930__vishwajay__boop-741-mhz.wav');
 
     if (selectBackgroundColor.getAttribute('class') === 'textSize screenStyle') {
+        keyboardSuportRemove();
         selectBackgroundColor.classList.remove('screenStyle')
         powerOff.play();
         allClearPress();
         disableButtons(true);
     }else {
+        keyboardSupportAdd();
         selectBackgroundColor.classList.add('screenStyle');
         powerOn.play();
         disableButtons(false);
@@ -215,6 +228,25 @@ function allClearPress() {
         operatorInput: ['nothing'],
         numAfterOp: [],
         result: '',
+        copyText: [],
+        numOne: key => { if(key.key == "1"){logDataArray("1"); updateScreenText();}},
+        numTwo: key => {if(key.key == "2"){logDataArray("2"); updateScreenText();}},
+        numThree: key => {if(key.key == "3"){logDataArray("3"); updateScreenText()}},
+        numFour: key => {if(key.key == "4"){logDataArray("4"); updateScreenText()}},
+        numFive: key => {if(key.key == "5"){logDataArray("5"); updateScreenText();}},
+        numSix: key => {if(key.key == "6"){logDataArray("6"); updateScreenText();}},
+        numSeven: key => {if(key.key == "7"){logDataArray("7"); updateScreenText();}},
+        numEight: key => {if(key.key == "8"){logDataArray("8"); updateScreenText();}},
+        numNine: key => {if(key.key == "9"){logDataArray("9"); updateScreenText();}},
+        numZero: key => {if(key.key == "0"){logDataArray("0"); updateScreenText();}},
+        addV: key => {if(key.key == "+"){logDataArray("+"); screenShowOpt();}},
+        subtractV: key => {if(key.key == "-"){logDataArray("-"); screenShowOpt();}},
+        multiplyV: key => {if(key.key == "*"){logDataArray("*"); screenShowOpt()}},
+        divideV: key => {if(key.key == "/"){logDataArray("/"); screenShowOpt();}},
+        decimalV: key => {if(key.key == "."){logDataArray("."), updateScreenText()}},
+        percentageB: key => {if(key.key == "%"){percentageButton()}},
+        equalsB: key => {if(key.key == "=" || key.key == "Enter"){(equalsKeyPress())}},
+        clearBackspace: key => {if(key.key == "Backspace"){clearPress();}},
     };
 
     screenDialog.textContent = '';
@@ -303,4 +335,22 @@ let data = {
     numAfterOp: [],
     result: '',
     copyText: [],
+    numOne: key => { if(key.key == "1"){logDataArray("1"); updateScreenText();}},
+    numTwo: key => {if(key.key == "2"){logDataArray("2"); updateScreenText();}},
+    numThree: key => {if(key.key == "3"){logDataArray("3"); updateScreenText()}},
+    numFour: key => {if(key.key == "4"){logDataArray("4"); updateScreenText()}},
+    numFive: key => {if(key.key == "5"){logDataArray("5"); updateScreenText();}},
+    numSix: key => {if(key.key == "6"){logDataArray("6"); updateScreenText();}},
+    numSeven: key => {if(key.key == "7"){logDataArray("7"); updateScreenText();}},
+    numEight: key => {if(key.key == "8"){logDataArray("8"); updateScreenText();}},
+    numNine: key => {if(key.key == "9"){logDataArray("9"); updateScreenText();}},
+    numZero: key => {if(key.key == "0"){logDataArray("0"); updateScreenText();}},
+    addV: key => {if(key.key == "+"){logDataArray("+"); screenShowOpt();}},
+    subtractV: key => {if(key.key == "-"){logDataArray("-"); screenShowOpt();}},
+    multiplyV: key => {if(key.key == "*"){logDataArray("*"); screenShowOpt()}},
+    divideV: key => {if(key.key == "/"){logDataArray("/"); screenShowOpt();}},
+    decimalV: key => {if(key.key == "."){logDataArray("."), updateScreenText()}},
+    percentageB: key => {if(key.key == "%"){percentageButton()}},
+    equalsB: key => {if(key.key == "=" || key.key == "Enter"){(equalsKeyPress())}},
+    clearBackspace: key => {if(key.key == "Backspace"){clearPress();}},
 };
