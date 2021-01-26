@@ -130,7 +130,8 @@ function logDataArray() {
             }
         } 
     //This second part of this if statment below is for operators only.
-    } else if (data.operatorInput.includes('nothing')) {
+    } else if (data.operatorInput.includes('nothing') || data.numAfterOp.length == 0) {
+        data.operatorInput.pop();
         data.operatorInput = Array.from(arguments[1] || arguments[0]); // same as below.
 
     } else { //This line runs when we already have a beforeOp intiger / operatorInput / afterOp intiger. Calculates problem before moving onto next.
@@ -176,7 +177,21 @@ function updateScreenText () {
 };
 function screenShowOpt() {
     const screenDialog = document.querySelector('#text');
-    data.copyText = screenDialog.textContent + data.operatorInput;
+
+    let num1 = data.numBeforeOp;
+    let num2 = data.numAfterOp;
+
+    if(data.numBeforeOp.length >= 2){num1 = data.numBeforeOp.join('')};
+
+    if(data.numAfterOp.length >= 2){num2 = data.numAfterOp.join('')};
+
+    if(data.operatorInput == '+' || '-' || '*' || '/' ){
+        if(data.numAfterOp.length == 0){
+        data.copyText = [];
+        }
+    }
+
+    data.copyText = num1 + data.operatorInput;
 
     screenDialog.textContent = data.copyText;
 };
