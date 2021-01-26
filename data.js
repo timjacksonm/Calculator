@@ -85,7 +85,6 @@ function allButtons() {
     divideV.addEventListener('click', () => { logDataArray(divideV.textContent, divideV.getAttribute('value')), screenShowOpt()});
     document.addEventListener('keydown', key => {if(key.key == "/"){logDataArray(divideV.textContent, divideV.getAttribute('value')); screenShowOpt();}});
 
-
     const decimalV = document.querySelector('#decimal');
     decimalV.addEventListener('click', () => { logDataArray(decimalV.textContent), updateScreenText()});
     document.addEventListener('keydown', key => {if(key.key == "."){logDataArray(decimalV.textContent), updateScreenText()}});
@@ -95,12 +94,11 @@ function allButtons() {
     document.addEventListener('keydown', key => {if(key.key == "%"){percentageButton()}});
 
     const powerB = document.querySelector('#powerButton');
-    powerB.addEventListener('click', () => { turnOnScreen()});
+    powerB.addEventListener('click', () => { turnOnScreen();});
 
     const equalsB = document.querySelector('#equals');
     equalsB.addEventListener('click', () => { equalsKeyPress()});
     document.addEventListener('keydown', key => {if(key.key == "=" || key.key == "Enter"){(equalsKeyPress())}});
-
 
     const allClear = document.querySelector('#allClear');
     allClear.addEventListener('click', ()  => allClearPress());
@@ -147,9 +145,16 @@ function turnOnScreen() {
     let powerOn = new Audio('./graphics/529929__vishwajay__boop-852-mhz.wav');
     let powerOff = new Audio('./graphics/529930__vishwajay__boop-741-mhz.wav');
 
-    selectBackgroundColor.getAttribute('class') === 'textSize screenStyle' ? 
-    selectBackgroundColor.classList.remove('screenStyle') && powerOff.play() && allClearPress() && disableButtons(true)
-    : selectBackgroundColor.classList.add('screenStyle') && powerOn.play() && disableButtons(false);
+    if (selectBackgroundColor.getAttribute('class') === 'textSize screenStyle') {
+        selectBackgroundColor.classList.remove('screenStyle')
+        powerOff.play();
+        allClearPress();
+        disableButtons(true);
+    }else {
+        selectBackgroundColor.classList.add('screenStyle');
+        powerOn.play();
+        disableButtons(false);
+    };
 };
 function accessDenied() {
     let audio = new Audio('./graphics/dennis_nedry_ahahah.mp3');
@@ -207,19 +212,15 @@ function disableButtons() {
     );
 };
 function clearPress() {
-    //this function is similar to hitting backspace on keyboard.
+    //This function is similar to hitting backspace on keyboard.
     const screenDialog = document.querySelector('#text');
 
     let num1 = data.numBeforeOp;
     let num2 = data.numAfterOp;
 
-    data.numBeforeOp.length >= 2 ?
-    num1 = data.numBeforeOp.join('') :
-    false;
+    if(data.numBeforeOp.length >= 2){num1 = data.numBeforeOp.join('')};
 
-    data.numAfterOp.length >= 2 ?
-    num2 = data.numAfterOp.join('') :
-    false;
+    if(data.numAfterOp.length >= 2){num2 = data.numAfterOp.join('')};
 
     if (screenDialog.textContent == num1) {
         data.numBeforeOp.pop();
