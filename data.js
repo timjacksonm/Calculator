@@ -222,10 +222,10 @@ function clearPress() {
 
     if(data.numAfterOp.length >= 2){num2 = data.numAfterOp.join('')};
 
-    if (screenDialog.textContent == num1) {
+    if (data.operatorinput == 'nothing') {
         data.numBeforeOp.pop();
         updateScreenText();
-    } else if (screenDialog.textContent == num2) {
+    } else if (data.operatorinput == '+' || '-' || '*' || '/' ) {
         data.numAfterOp.pop();
         updateScreenText();
     }else {
