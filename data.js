@@ -143,12 +143,13 @@ function updateScreenText () {
 
     data.operatorinput.includes('nothing') ?
     screenDialog.textContent = num1 :
-    screenDialog.textContent = num2;
+    screenDialog.textContent = data.copyText + num2;
 };
 function screenShowOpt() {
     const screenDialog = document.querySelector('#text');
+    data.copyText = screenDialog.textContent + data.operatorinput;
 
-    screenDialog.textContent = data.operatorinput;
+    screenDialog.textContent = data.copyText;
 };
 function equalsKeyPress() {
     let num1 = data.numBeforeOp;
@@ -265,4 +266,5 @@ let data = {
     operatorinput: ['nothing'],
     numAfterOp: [],
     result: '',
+    copyText: [],
 };
