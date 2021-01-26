@@ -113,9 +113,9 @@ function allButtons() {
 function logDataArray() {
     //The first part to this If statment is for intigers only.
     if (data.intigerCompare.includes(arguments[0])) {
-        if (data.operatorinput.includes('nothing')) {
+        if (data.operatorInput.includes('nothing')) {
             data.numBeforeOp.push(arguments[0]); // First number of equation.
-        } else { // Below this line starts if operatorinput includes an operator.
+        } else { // Below this line starts if operatorInput includes an operator.
             if (data.result.length === 0) {
                 data.numAfterOp.push(arguments[0]); // Second number of equation.
             } else {
@@ -130,12 +130,12 @@ function logDataArray() {
             }
         } 
     //This second part of this if statment below is for operators only.
-    } else if (data.operatorinput.includes('nothing')) {
-        data.operatorinput = Array.from(arguments[1] || arguments[0]); // same as below.
+    } else if (data.operatorInput.includes('nothing')) {
+        data.operatorInput = Array.from(arguments[1] || arguments[0]); // same as below.
 
-    } else { //This line runs when we already have a beforeOp intiger / operatorinput / afterOp intiger. Calculates problem before moving onto next.
+    } else { //This line runs when we already have a beforeOp intiger / operatorInput / afterOp intiger. Calculates problem before moving onto next.
         equalsKeyPress();
-        data.operatorinput = Array.from(arguments[1] || arguments[0]); // Two arguments why? allButtons() needs a second argument for multiply & divide to work. text value won't work with javascript.
+        data.operatorInput = Array.from(arguments[1] || arguments[0]); // Two arguments why? allButtons() needs a second argument for multiply & divide to work. text value won't work with javascript.
         data.numBeforeOp = data.result;
         data.numAfterOp = [];
     };
@@ -171,12 +171,12 @@ function updateScreenText () {
 
     if(data.numAfterOp.length >= 2){num2 = data.numAfterOp.join('')};
 
-    data.operatorinput.includes('nothing') ? screenDialog.textContent = num1
+    data.operatorInput.includes('nothing') ? screenDialog.textContent = num1
     : screenDialog.textContent = data.copyText + num2;
 };
 function screenShowOpt() {
     const screenDialog = document.querySelector('#text');
-    data.copyText = screenDialog.textContent + data.operatorinput;
+    data.copyText = screenDialog.textContent + data.operatorInput;
 
     screenDialog.textContent = data.copyText;
 };
@@ -188,7 +188,7 @@ function equalsKeyPress() {
 
     if(data.numAfterOp.length >= 2){num2 = data.numAfterOp.join('')};
 
-    operate(data.operatorinput, num1, num2);
+    operate(data.operatorInput, num1, num2);
 };
 function allClearPress() {
     const screenDialog = document.querySelector('#text');
@@ -197,7 +197,7 @@ function allClearPress() {
         intigerCompare: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'],
         operatorCompare: ['+', '-', '*', '/'],
         numBeforeOp: [],
-        operatorinput: ['nothing'],
+        operatorInput: ['nothing'],
         numAfterOp: [],
         result: '',
     };
@@ -222,10 +222,10 @@ function clearPress() {
 
     if(data.numAfterOp.length >= 2){num2 = data.numAfterOp.join('')};
 
-    if (data.operatorinput == 'nothing') {
+    if (data.operatorInput == 'nothing') {
         data.numBeforeOp.pop();
         updateScreenText();
-    } else if (data.operatorinput == '+' || '-' || '*' || '/' ) {
+    } else if (data.operatorInput == '+' || '-' || '*' || '/' ) {
         data.numAfterOp.pop();
         updateScreenText();
     }else {
@@ -235,7 +235,7 @@ function clearPress() {
 function plusNegativeButton () {
     let value = '-';
 
-    if (data.operatorinput.includes('nothing')) {
+    if (data.operatorInput.includes('nothing')) {
         if (data.numBeforeOp.includes(value)) {
             data.numBeforeOp.splice(0,1);
         } else {
@@ -256,23 +256,23 @@ function percentageButton () {
     let y = 0;
     let z = 0;
 
-    if (data.operatorinput.includes('nothing')) {
+    if (data.operatorInput.includes('nothing')) {
         data.numBeforeOp = data.numBeforeOp.join('');
         data.numBeforeOp = Array.from((data.numBeforeOp / 100).toString());
-    } else if (data.operatorinput.includes('+')) {
+    } else if (data.operatorInput.includes('+')) {
         x = Number(data.numAfterOp.join(''));
         y = Number(data.numBeforeOp.join(''));
         z = ( y * ( x / 100));
         data.numAfterOp = Array.from(z.toString());  
-    } else if (data.operatorinput.includes('*')) {
+    } else if (data.operatorInput.includes('*')) {
         data.numAfterOp = data.numAfterOp.join('');
         data.numAfterOp = Array.from((data.numAfterOp / 100).toString());
-    } else if (data.operatorinput.includes('-')) {
+    } else if (data.operatorInput.includes('-')) {
         x = Number(data.numAfterOp.join(''));
         y = Number(data.numBeforeOp.join(''));
         z = ( y * ( x / 100));
         data.numAfterOp = Array.from(z.toString());  
-    }else if (data.operatorinput.includes('/')) {
+    }else if (data.operatorInput.includes('/')) {
         data.numAfterOp = data.numAfterOp.join('');
         data.numAfterOp = Array.from((data.numAfterOp / 100).toString());
     }
@@ -284,7 +284,7 @@ let data = {
     intigerCompare: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'],
     operatorCompare: ['+', '-', '*', '/'],
     numBeforeOp: [],
-    operatorinput: ['nothing'],
+    operatorInput: ['nothing'],
     numAfterOp: [],
     result: '',
     copyText: [],
