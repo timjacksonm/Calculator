@@ -71,18 +71,18 @@ function allButtons() {
 
     const addV = document.querySelector('#add');
     addV.addEventListener('click', () => { logDataArray(addV.textContent, addV.getAttribute('value')), screenShowOpt()});
-    document.addEventListener('keydown', key => {if(key.key == "+"){logDataArray(addV.textContent, addV.getAttribute('value')); screenShowOpt();}});
+    document.addEventListener('keydown', key => {if(key.key == "+"){logDataArray(addV.textContent); screenShowOpt();}});
 
     const subtractV = document.querySelector('#subtract');
-    subtractV.addEventListener('click', () => { logDataArray(subtractV.textContent, subtractV.getAttribute('value')), screenShowOpt()});// add and subtract I just added values to aswell even though it wasn't really needed.
-    document.addEventListener('keydown', key => {if(key.key == "-"){logDataArray(subtractV.textContent, subtractV.getAttribute('value')); screenShowOpt();}});
+    subtractV.addEventListener('click', () => { logDataArray(subtractV.textContent, subtractV.getAttribute('value')), screenShowOpt()});
+    document.addEventListener('keydown', key => {if(key.key == "-"){logDataArray(subtractV.textContent); screenShowOpt();}});
 
     const multiplyV = document.querySelector('#multiply');
-    multiplyV.addEventListener('click', () => { logDataArray(multiplyV.textContent, multiplyV.getAttribute('value')), screenShowOpt()}); // the logDataArray() function populates the screen with arg[0] and the if statement uses arg[1]
+    multiplyV.addEventListener('click', () => { logDataArray(multiplyV.textContent, multiplyV.getAttribute('value')), screenShowOpt()});
     document.addEventListener('keydown', key => {if(key.key == "*"){logDataArray(multiplyV.textContent, multiplyV.getAttribute('value')); screenShowOpt()}});
 
     const divideV = document.querySelector('#divide');
-    divideV.addEventListener('click', () => { logDataArray(divideV.textContent, divideV.getAttribute('value')), screenShowOpt()}); // --^
+    divideV.addEventListener('click', () => { logDataArray(divideV.textContent, divideV.getAttribute('value')), screenShowOpt()});
     document.addEventListener('keydown', key => {if(key.key == "/"){logDataArray(divideV.textContent, divideV.getAttribute('value')); screenShowOpt();}});
 
 
@@ -113,28 +113,31 @@ function allButtons() {
     changePlusNegative.addEventListener('click', () => plusNegativeButton());
 };
 function logDataArray() {
-    //This function is our brains to make calculator work. 
+    //The first part to this If statment is for intigers only.
     if (data.intigerCompare.includes(arguments[0])) {
         if (data.operatorinput.includes('nothing')) {
-            data.numBeforeOp.push(arguments[0]);
-        } else if (data.operatorCompare.includes(data.operatorinput[0])) {
-            if (data.result.length === 0 || data.result.length === undefined) {
-                data.numAfterOp.push(arguments[0]);
+            data.numBeforeOp.push(arguments[0]); // First number of equation.
+        } else { // Below this line starts if operatorinput includes an operator.
+            if (data.result.length === 0) {
+                data.numAfterOp.push(arguments[0]); // Second number of equation.
             } else {
-                if (data.numAfterOp.length === 1) {
+                if (data.numAfterOp.length >= 1 && data.numBeforeOp != data.result) { //This line runs if 2+2=4 and then press 2 with no operator. so we start the equation from the beginning
                     allClearPress();
                     data.numBeforeOp.push(arguments[0]);
-                }else
-                data.numAfterOp.push(arguments[0]);
+                }else if (data.numAfterOp.length >= 1 && data.numBeforeOp == data.result) { //This line runs if its 2+2=4+ more than one intiger
+                    data.numAfterOp.push(arguments[0]);
+                }else {
+                data.numAfterOp.push(arguments[0]); //This line runs if 2+2=4 + a single
+                }
             }
         } 
- 
+    //This second part of this if statment below is for operators only.
     } else if (data.operatorinput.includes('nothing')) {
-        data.operatorinput = Array.from(arguments[1]);
+        data.operatorinput = Array.from(arguments[1] || arguments[0]); // same as below.
 
-    } else {
+    } else { //This line runs when we already have a beforeOp intiger / operatorinput / afterOp intiger. Calculates problem before moving onto next.
         equalsKeyPress();
-        data.operatorinput = Array.from(arguments[1]);
+        data.operatorinput = Array.from(arguments[1] || arguments[0]); // Two arguments why? allButtons() needs a second argument for multiply & divide to work. text value won't work with javascript.
         data.numBeforeOp = data.result;
         data.numAfterOp = [];
     };
