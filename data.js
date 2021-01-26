@@ -162,17 +162,12 @@ function updateScreenText () {
     let num1 = data.numBeforeOp;
     let num2 = data.numAfterOp;
 
-    data.numBeforeOp.length >= 2 ?
-    num1 = data.numBeforeOp.join('') :
-    false;
+    if(data.numBeforeOp.length >= 2) {num1 = data.numBeforeOp.join('')};
 
-    data.numAfterOp.length >= 2 ?
-    num2 = data.numAfterOp.join('') :
-    false;
+    if(data.numAfterOp.length >= 2) {num2 = data.numAfterOp.join('')};
 
-    data.operatorinput.includes('nothing') ?
-    screenDialog.textContent = num1 :
-    screenDialog.textContent = data.copyText + num2;
+    data.operatorinput.includes('nothing') ? screenDialog.textContent = num1
+    : screenDialog.textContent = data.copyText + num2;
 };
 function screenShowOpt() {
     const screenDialog = document.querySelector('#text');
