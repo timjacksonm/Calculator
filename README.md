@@ -24,10 +24,5 @@
 - [✔️] make additional buttons work like +/- & %percentage.
 
 
-**Changelog:**
+**View Commits on project to see changes**
 
-01/20/2021
-
--created repo & files
-
--updated readme.
