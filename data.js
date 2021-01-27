@@ -122,21 +122,37 @@ function allButtons() {
     powerB.addEventListener('click', () => { turnOnScreen();});
 };
 function logDataArray() {
+    const selectButtons = document.querySelector('#buttonContainer').querySelectorAll('button');
     //The first part to this If statment is for intigers only.
     if (data.intigerCompare.includes(arguments[0])) {
         if (data.operatorInput.includes('nothing')) {
+            if (data.intigerCompare[10] == arguments[0]) { // First Decimal before operatorInput
+                selectButtons[5].disabled = true;
+                data.numBeforeOp.push(arguments[0]);
+            }else {
             data.numBeforeOp.push(arguments[0]); // First number of equation.
+            }
         } else { // Below this line starts if operatorInput includes an operator.
             if (data.result.length === 0) {
-                data.numAfterOp.push(arguments[0]); // Second number of equation.
+                if (data.intigerCompare[10] == arguments[0]) { // First Decimal after operatorInput
+                    selectButtons[5].disabled = true;
+                    data.numAfterOp.push(arguments[0]);
+                }else {
+                    data.numAfterOp.push(arguments[0]); // Second number of equation.
+                }
             } else {
                 if (data.numAfterOp.length >= 1 && data.numBeforeOp != data.result) { //This line runs if 2+2=4 and then press 2 with no operator. so we start the equation from the beginning
                     allClearPress();
                     data.numBeforeOp.push(arguments[0]);
+                    if (selectButtons[5].disabled){selectButtons[5].disabled = false;};
+
                 }else if (data.numAfterOp.length >= 1 && data.numBeforeOp == data.result) { //This line runs if its 2+2=4+ more than one intiger
                     data.numAfterOp.push(arguments[0]);
+                    if (data.intigerCompare[10] == arguments[0]){selectButtons[5].disabled = true;};
+
                 }else {
                 data.numAfterOp.push(arguments[0]); //This line runs if 2+2=4 + a single
+                if (data.intigerCompare[10] == arguments[0]){selectButtons[5].disabled = true;};
                 }
             }
         } 
@@ -144,12 +160,14 @@ function logDataArray() {
     } else if (data.operatorInput.includes('nothing') || data.numAfterOp.length == 0) {
         data.operatorInput.pop();
         data.operatorInput = Array.from(arguments[1] || arguments[0]); // same as below.
+        if (selectButtons[5].disabled) {selectButtons[5].disabled = false;};
 
     } else { //This line runs when we already have a beforeOp intiger / operatorInput / afterOp intiger. Calculates problem before moving onto next.
         equalsKeyPress();
         data.operatorInput = Array.from(arguments[1] || arguments[0]); // Two arguments why? allButtons() needs a second argument for multiply & divide to work. text value won't work with javascript.
         data.numBeforeOp = data.result;
         data.numAfterOp = [];
+        if (selectButtons[5].disabled) {selectButtons[5].disabled = false;};
     };
 };
 function turnOnScreen() {
@@ -249,6 +267,10 @@ function allClearPress() {
         clearBackspace: key => {if(key.key == "Backspace"){clearPress();}},
     };
 
+    const selectButtons = document.querySelector('#buttonContainer').querySelectorAll('button');
+
+    if (selectButtons[5].disabled){selectButtons[5].disabled = false;};
+        
     screenDialog.textContent = '';
 };
 function disableButtons() {
