@@ -22,10 +22,10 @@
 <details>
   <summary>Show Images</summary>
   Demonstrates multiple calculations 
-  ![GIF demo](https://imgur.com/a/eydJEfl)
+  ![GIF demo](graphics/calcdemo.gif)
   
   Just saying Hello!
-  ![Upside Down Calculator](https://imgur.com/a/Ny8xgAu)
+  ![Upside Down Calculator](graphics/calcupsidedown.png)
 </details>
 
 ## Goals:
