@@ -21,11 +21,11 @@
 
 <details>
   <summary>Show Images</summary>
-  image summary
-  <img src='https://imgur.com/a/eydJEfl'>
+  Demonstrates multiple calculations 
+  ![GIF demo](https://imgur.com/a/eydJEfl)
   
-  imagesummary 2
-  <img src='https://imgur.com/a/Ny8xgAu'>
+  Just saying Hello!
+  ![Upside Down Calculator](https://imgur.com/a/Ny8xgAu)
 </details>
 
 ## Goals:
