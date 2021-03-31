@@ -10,8 +10,8 @@
   <a href="#screenshots">Screenshots</a> •
   <a href="#goals">Goals</a> •
   <a href="#summary">Summary</a> •
-  <a href="#credits">Credits</a> •
   <a href="#author">Author</a> •
+    <a href="#credits">Credits</a> •
   <a href="#license">License</a>
 </p>
 
@@ -56,7 +56,7 @@
 
 ## Summary
 
-This project was very challenging and rewarding. I started with trying to get the functionality figured out in my javascript file. Followed by styling. The most challenging part for me was figuring out the logic for different scenarios that could happen. Specifically the % percentage key. I made its own function just to handle the equations correctly. This is a great project that shows where I started before moving on from foundations.
+This project was very challenging and rewarding. I started with trying to get the functionality figured out in my javascript file. Followed by styling. The most challenging part for me was figuring out the logic for different scenarios that could happen. Specifically the % percentage key. I made its own function just to handle the equations correctly. I also added some personal extra credit goals that were not included in the assighment. This gave me extra learning in areas I wanted to explore. This is a great project that shows where I started before moving on from foundations.
 
 p.s. if you haven't tried to divide by 0 - go ahead and try. Apart from the project being challenging I had fun with it also.
 
