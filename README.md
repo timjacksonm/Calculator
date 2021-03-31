@@ -22,10 +22,10 @@
 <details>
   <summary>Show Images</summary>
   image summary
-  <img src='#'>
+  <img src='https://imgur.com/a/eydJEfl'>
   
   imagesummary 2
-  <img src='#'>
+  <img src='https://imgur.com/a/Ny8xgAu'>
 </details>
 
 ## Goals:
@@ -75,6 +75,6 @@ This project idea was a part of my studies at The Odin Project's curriculum. You
 ## License
 
 <p>
-  <a href="#">
+  <a href="https://choosealicense.com/licenses/mit/">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg">
 </p>
