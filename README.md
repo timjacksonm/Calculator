@@ -21,7 +21,8 @@
 
 <details>
   <summary>Show Images</summary>
-  Demonstrates multiple calculations 
+  Demonstrates multiple calculations
+  
   ![GIF demo](graphics/calcdemo.gif)
   
   Just saying Hello!
