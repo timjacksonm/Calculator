@@ -15,7 +15,7 @@
   <a href="#license">License</a>
 </p>
 
-### ✨ [Live Preview](https://timjacksonm.github.io/Calculator)
+### ✨ [Live Demo](https://timjacksonm.github.io/Calculator)
 
 ## Screenshots
 
